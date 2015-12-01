@@ -24,8 +24,16 @@ using Newtonsoft.Json.Linq;
 
 namespace SocketClusterSharp.Helpers
 {
+	/// <summary>
+	/// Helpers for working with JSON data.
+	/// </summary>
 	public static class JsonHelpers
 	{
+		/// <summary>
+		/// Determines if is null or empty the specified token.
+		/// </summary>
+		/// <returns><c>true</c> if is null or empty the specified token; otherwise, <c>false</c>.</returns>
+		/// <param name="token">Token.</param>
 		public static bool IsNullOrEmpty (this JToken token)
 		{
 			return (token == null) ||

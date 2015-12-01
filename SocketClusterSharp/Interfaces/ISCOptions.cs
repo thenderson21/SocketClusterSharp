@@ -24,6 +24,9 @@ using SocketClusterSharp.Helpers.Web;
 
 namespace SocketClusterSharp.Interfaces
 {
+	/// <summary>
+	/// Base SCOptions Intervace
+	/// </summary>
 	public interface ISCOptions
 	{
 		/// <summary>

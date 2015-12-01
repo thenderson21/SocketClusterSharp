@@ -29,7 +29,10 @@ namespace SocketClusterSharp.Errors
 	/// </summary>
 	public class SCError
 	{
-		
+		/// <summary>
+		/// Gets or sets the error code.
+		/// </summary>
+		/// <value>The error code.</value>
 		[JsonProperty (PropertyName = "code", NullValueHandling = NullValueHandling.Ignore)]
 		public int Code { get; set; }
 
@@ -62,14 +65,14 @@ namespace SocketClusterSharp.Errors
 		public string Stack { get; set; }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Errors.SCError"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Errors.SCError"/> class.
 		/// </summary>
 		public SCError ()
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Errors.SCError"/> struct.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Errors.SCError"/> struct.
 		/// </summary>
 		/// <param name="message">Error Message.</param>
 		public SCError (string message)
@@ -78,7 +81,7 @@ namespace SocketClusterSharp.Errors
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Errors.SCError"/> struct.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Errors.SCError"/> struct.
 		/// </summary>
 		/// <param name="type">Error Type.</param>
 		/// <param name="message">Error Message.</param>

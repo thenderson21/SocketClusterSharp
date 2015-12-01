@@ -37,8 +37,11 @@ namespace SocketClusterSharp.Helpers
 		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		public static T Merge<T> (this T target, T source)
 		{
-			if (source != null) {
-				var properties = typeof(T)
+			var typeOfT = typeof(T);
+			if (typeOfT.GetTypeInfo ().IsValueType) {
+				target = source;
+			} else if (source != null) {
+				var properties = typeOfT
 					.GetRuntimeProperties ()
 					.Select ((PropertyInfo x) => new KeyValuePair<PropertyInfo, object> (x, x.GetValue (source, null)))
 					.Where ((KeyValuePair<PropertyInfo, object> x) => x.Value != null).ToList ();

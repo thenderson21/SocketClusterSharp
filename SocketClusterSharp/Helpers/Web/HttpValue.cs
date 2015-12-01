@@ -28,14 +28,14 @@ namespace SocketClusterSharp.Helpers.Web
 	public sealed class HttpValue
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> class.
 		/// </summary>
 		public HttpValue ()
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> class.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="value">Value.</param>

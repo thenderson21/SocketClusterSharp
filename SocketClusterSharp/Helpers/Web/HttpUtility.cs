@@ -25,9 +25,9 @@ namespace SocketClusterSharp.Helpers.Web
 	sealed class HttpUtility
 	{
 		/// <summary>
-		/// Parses a query string into a <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"> using UTF8 encoding.
+		/// Parses a query string into a <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"> using UTF8 encoding.
 		/// </summary>
-		/// <returns>A <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"> of query parameters and values. </returns>
+		/// <returns>A <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"> of query parameters and values. </returns>
 		/// <param name="query">The query string to parse.</param>
 		public static HttpValueCollection ParseQueryString (string query)
 		{

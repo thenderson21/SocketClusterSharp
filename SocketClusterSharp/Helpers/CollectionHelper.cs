@@ -23,8 +23,19 @@ using System.Collections.Generic;
 
 namespace SocketClusterSharp.Helpers
 {
+	/// <summary>
+	/// A collection of helper methods and extensions for <see cref="System.Collections.Generic.ICollection">
+	/// </summary>
 	public static class CollectionHelper
 	{
+		/// <summary>
+		/// Adds a value to an ICollection and converts a it to a html query string
+		/// </summary>
+		/// <returns>The query string.</returns>
+		/// <param name="query">Query.</param>
+		/// <param name="name">parameter name.</param>
+		/// <param name="value">parameter value.</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
 		public static String ToQueryString <T> (this ICollection<T> query, string name, string value)
 		{
 

@@ -23,6 +23,9 @@ using System.Reflection;
 
 namespace SocketClusterSharp.Client
 {
+	/// <summary>
+	/// Socket cluster.
+	/// </summary>
 	public static class SocketCluster
 	{
 		#region Public Properties

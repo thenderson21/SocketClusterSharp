@@ -24,17 +24,22 @@ using SocketClusterSharp.Client;
 
 namespace SocketClusterSharp.Tests
 {
-	[TestFixture, Description ("Testing Static items in SocketCluster")]
+	[TestFixture]
+	[Description ("Testing Static items in SocketCluster")]
+	[Category ("StaticResourses")]
+	[Author ("Todd Henderson")]
 	public class SocketClusterClientStaticTests
 	{
-		[Test, Description ("Testing that \"SocketCluster.Version\" returns a valid reponse.")]
+		[Test]
+		[Description ("Testing that \"SocketCluster.Version\" returns a valid reponse.")]
 		public void VersionString ()
 		{
 			Assert.That (SocketCluster.Version, Is.Not.Null.And.Not.Empty);
 			Assert.That (SocketCluster.Version, Does.Match (@"\d+\.\d+(\.\d+)?(-\w+)?"));
 		}
 
-		[Test, Description ("Testing that \"SocketCluster.Connection ()\" returns a valid reponse.")]
+		[Test]
+		[Description ("Testing that \"SocketCluster.Connection ()\" returns a valid reponse.")]
 		public void Connection ()
 		{
 			var connection = SocketCluster.Connection ();

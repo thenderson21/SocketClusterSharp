@@ -28,7 +28,9 @@ using Newtonsoft.Json.Linq;
 
 namespace SocketClusterSharp.Tests
 {
-	[TestFixture, Description ("Testing SocketCluster Client")]
+	[TestFixture]
+	[Description ("Testing SocketCluster Client")]
+	[Category ("NetworkConnections")]
 	[Author ("Todd Henderson")]
 	public class SocketClusterClientTests
 	{
@@ -36,6 +38,7 @@ namespace SocketClusterSharp.Tests
 
 		bool Connected = false;
 
+		#region Setup/TearDown
 
 		[OneTimeSetUp]
 		public void SetUpFixture ()
@@ -61,8 +64,13 @@ namespace SocketClusterSharp.Tests
 			}
 		}
 
-		[Test, Description ("Testing connection to SocketCluster Server.")]
-		public async Task Connecting ()
+		#endregion
+
+		#region Tests
+
+		[Test][Ignore ("Ignore a test temporarily")]
+		[Description ("Testing connection to SocketCluster Server.")]
+		public void Connecting ()
 		{
 			if (RetryUntilSuccessOrTimeout (() => Connected, TimeSpan.FromMilliseconds (500))) {
 				Assert.That (SocketClient.State, Is.EqualTo (SCConnectionState.Open), "SocketClient.State is incorrect.");
@@ -72,7 +80,8 @@ namespace SocketClusterSharp.Tests
 			}
 		}
 
-		[Test, Description ("Testing subscription to Socket Channels.")]
+		[Test][Ignore ("Ignore a test temporarily")]
+		[Description ("Testing subscription to Socket Channels.")]
 		public async Task Channels ()
 		{
 			if (RetryUntilSuccessOrTimeout (() => Connected, TimeSpan.FromMilliseconds (500))) {
@@ -114,7 +123,7 @@ namespace SocketClusterSharp.Tests
 					Assert.That (channel.Name, Is.EqualTo (channelName), "Channel.Name set incorrectly.");
 
 					//Publish Channel Data
-					channel.PublishAsync (publishData);
+					await channel.PublishAsync (publishData);
 					if (RetryUntilSuccessOrTimeout (() => channelWatchResults != null, TimeSpan.FromMilliseconds (500))) {
 						Assert.That (channelWatchResults ["$applications"], Is.EqualTo (publishData ["$applications"]), "channelWatchResults[\"$applications\"] value does not match.");
 						Assert.That (channelWatchResults ["$event"], Is.EqualTo (publishData ["$event"]), "channelWatchResults[\"$event\"]  value does not match.");
@@ -143,21 +152,27 @@ namespace SocketClusterSharp.Tests
 		}
 
 
-		[Test, Description ("Testing disconnection from SocketCluster Server.")]
+		[Test]
+		[Description ("Testing disconnection from SocketCluster Server.")]
 		public async Task Disconnecting ()
 		{
 			if (RetryUntilSuccessOrTimeout (() => Connected, TimeSpan.FromMilliseconds (500))) {
 				await SocketClient.DisconnectAsync ();
+				TestContext.WriteLine ("Disconnect Sent");
 
-				if (RetryUntilSuccessOrTimeout (() => !Connected, TimeSpan.FromMilliseconds (500))) {
+				if (RetryUntilSuccessOrTimeout (() => !Connected, TimeSpan.FromMilliseconds (1000))) {
 					Assert.That (SocketClient.State, Is.EqualTo (SCConnectionState.Closed), "SocketClient.State is incorrect.");
 				} else {
-					Assert.Fail ("Failed to disconnect from the server in under 500 miliseconds");
+					Assert.Fail ("Failed to disconnect from the server in under 1000 miliseconds");
 				}
 			} else {
 				Assert.Inconclusive ("Could not connect to the server in under 500 miliseconds");
 			}
 		}
+
+		#endregion
+
+		#region Common Methods
 
 		bool RetryUntilSuccessOrTimeout (Func<bool> task, TimeSpan timeSpan, int interval = 25)
 		{
@@ -170,5 +185,7 @@ namespace SocketClusterSharp.Tests
 			}
 			return success;
 		}
+
+		#endregion
 	}
 }

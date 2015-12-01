@@ -118,7 +118,7 @@ namespace SocketClusterSharp.Client
 		}
 
 		/// <summary>
-		/// Check if the <see cref=""/> is subscribed to this channel. 
+		/// Check if currently subscribed to this channel. 
 		/// </summary>
 		/// <returns><c>true</c> if this instance is subscribed.; otherwise, <c>false</c>.</returns>
 		/// <param name="includePending">If includePending is <c>true</c>, it will aslo return true if the subscription is pending.</param>
@@ -127,6 +127,12 @@ namespace SocketClusterSharp.Client
 			return _socketClient.IsSubscribed (Name, includePending);
 		}
 
+		/// <summary>
+		/// Publishs the data on given channel.
+		/// </summary>
+		/// <returns>The async.</returns>
+		/// <param name="data">Data.</param>
+		/// <param name="callback">Callback.</param>
 		public async Task PublishAsync (JToken data, SCCallback callback = null)
 		{
 			await _socketClient.PublishAsync (Name, data, callback);

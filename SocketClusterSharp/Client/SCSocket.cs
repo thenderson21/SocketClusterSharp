@@ -33,6 +33,9 @@ using SocketClusterSharp.Interfaces;
 
 namespace SocketClusterSharp.Client
 {
+	/// <summary>
+	/// SocketCluster socket.
+	/// </summary>
 	public class SCSocket : ICanLog
 	{
 		#region Private Fields
@@ -196,7 +199,7 @@ namespace SocketClusterSharp.Client
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.SCSocket"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.SCSocket"/> class.
 		/// </summary>
 		/// <param name="options">Options.</param>
 		public SCSocket (SCClientOptions options)
@@ -212,6 +215,7 @@ namespace SocketClusterSharp.Client
 			//Verify Durations
 			if (_ackTimeout > _maxTimeout)
 				throw new Exception ("The AckTimeout value provided exceeded the maximum amount allowed.");
+			
 			if (_pingTimeout > _maxTimeout)
 				throw new Exception ("The PingTimeout value provided exceeded the maximum amount allowed.");
 
@@ -296,14 +300,29 @@ namespace SocketClusterSharp.Client
 		/// </summary>
 		public async Task DisconnectAsync (int code = 1000, JToken data = null)
 		{
+			var closed = false;
+
 			if (State == SCConnectionState.Open) {
 				var packet = new {code = code}.ToJToken () as JObject;
 				packet.Add ("data", data);
 
-				await _transport.EmitAsync ("#disconnect", packet);
+
+				await _transport.EmitAsync ("#disconnect", packet, async (error, response) => {
+					if (error != null)
+						Error (error);
+
+					await _transport.CloseAsync ();
+					closed = true;
+				});
 			} 
 
-			await _transport.CloseAsync ();
+			Timer.Start (() => {
+				if (State != SCConnectionState.Closed && !closed) {
+					_transport.CloseAsync ();
+				}
+				return false;
+			}, 500D);
+
 		}
 
 		/// <summary>
@@ -519,7 +538,7 @@ namespace SocketClusterSharp.Client
 		/// <param name="callback">Callback.</param>
 		public async Task PublishAsync (JToken data, SCCallback callback = null)
 		{
-			EmitAsync ("#publish", data, callback);
+			await EmitAsync ("#publish", data, callback);
 		}
 
 		/// <summary>
@@ -537,7 +556,7 @@ namespace SocketClusterSharp.Client
 				data
 			};
 
-			EmitAsync ("#publish", pubData.ToJToken (), callback);
+			await EmitAsync ("#publish", pubData.ToJToken (), callback);
 		}
 
 		/// <summary>
@@ -820,8 +839,10 @@ namespace SocketClusterSharp.Client
 				timeout = reconnectOptions.MaxDelay;
 			}
 
-			_reconnectTimeoutTimer.Stop ();
+			if (_reconnectTimeoutTimer != null)
+				_reconnectTimeoutTimer.Stop ();
 
+			//TODO: Figure out how to convert this to async.
 			_reconnectTimeoutTimer = Timer.Start (() => {
 				ConnectAsync ();
 				return false;
@@ -870,7 +891,7 @@ namespace SocketClusterSharp.Client
 
 		#region Private Event Handlers
 
-		void Transport_Closed (int code, JToken data, bool openAborted = false)
+		async void Transport_Closed (int code, JToken data, bool openAborted = false)
 		{
 			Id = null;
 			State = SCConnectionState.Closed;
@@ -901,7 +922,7 @@ namespace SocketClusterSharp.Client
 					// status, don't wait before trying to reconnect - These could happen
 					// if the client wakes up after a period of inactivity and in this case we
 					// want to re-establish the connection as soon as possible.
-					this.TryReconnect (0);
+					await this.TryReconnect (0);
 
 				} else if (code != 1000) {
 					this.TryReconnect ();

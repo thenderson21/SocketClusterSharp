@@ -29,30 +29,33 @@ namespace SocketClusterSharp.Internal
 	}
 
 	/// <summary>
-	/// Socket Cluster loging levels.
+	/// SocketCluster internal logging methods.
 	/// </summary>
-	public enum SCLogingLevels
-	{
-		None,
-		Error,
-		Info,
-		Debug,
-		Trace
-	}
-
 	static class SCLogging
 	{
+		/// <summary>
+		/// Log the specified message for the given logingLevel.
+		/// </summary>
+		/// <param name="target">Target.</param>
+		/// <param name="message">Message.</param>
+		/// <param name="logingLevel">Loging level.</param>
 		public static void Log (this ICanLog target, string message, SCLogingLevels logingLevel)
 		{
 			if (logingLevel <= target.Logging) {
-				System.Diagnostics.Debug.WriteLine ("SCTransport:{0}:: {1}", logingLevel, message);
+				System.Diagnostics.Debug.WriteLine ("{0}:{1}:: {2}", target.GetType ().FullName, logingLevel, message);
 			}
 		}
 
+		/// <summary>
+		/// Log the specified message for the given logingLevel.
+		/// </summary>
+		/// <param name="target">Target.</param>
+		/// <param name="value">Value.</param>
+		/// <param name="logingLevel">Loging level.</param>
 		public static void Log (this ICanLog target, object value, SCLogingLevels logingLevel)
 		{
 			if (logingLevel <= target.Logging) {
-				System.Diagnostics.Debug.WriteLine ("SCTransport:{0}:: {1}", logingLevel, value);
+				System.Diagnostics.Debug.WriteLine ("{0}:{1}:: {2}", target.GetType ().FullName, logingLevel, value);
 			}
 		}
 	}

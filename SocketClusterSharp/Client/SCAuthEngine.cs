@@ -23,6 +23,9 @@ using System.Collections.Generic;
 
 namespace SocketClusterSharp.Client
 {
+	/// <summary>
+	/// Socket Cluster autherorization engine.
+	/// </summary>
 	public class SCAuthEngine
 	{
 		Dictionary<string, string> _localStorage { get; set; } = new Dictionary<string, string>();

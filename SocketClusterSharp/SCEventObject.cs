@@ -25,6 +25,9 @@ using SocketClusterSharp.Helpers;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster event object.
+	/// </summary>
 	public class SCEventObject
 	{
 		/// <summary>

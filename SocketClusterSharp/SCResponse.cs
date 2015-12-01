@@ -28,6 +28,9 @@ using WebSocket.Portable;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster responce object.
+	/// </summary>
 	public class SCResponse
 	{
 		#region Public Properties
@@ -191,9 +194,9 @@ namespace SocketClusterSharp
 		public async Task CallbackAsync (SCError error, object data = null)
 		{
 			if (error != null) {
-				ErrorAsync (error, data);
+				await ErrorAsync (error, data);
 			} else {
-				EndAsync (data);
+				await EndAsync (data);
 			}
 		}
 
@@ -203,7 +206,7 @@ namespace SocketClusterSharp
 
 		async Task RespondAsync (SCResponseData data)
 		{
-			Socket.SendAsync (data.ToJSON ());
+			await Socket.SendAsync (data.ToJSON ());
 		}
 
 		#endregion

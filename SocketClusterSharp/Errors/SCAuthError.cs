@@ -20,6 +20,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 namespace SocketClusterSharp.Errors
 {
+	/// <summary>
+	/// SocketCCluster authorization error.
+	/// </summary>
 	public class SCAuthError : SCError
 	{
 	}

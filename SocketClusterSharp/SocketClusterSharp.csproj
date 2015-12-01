@@ -61,8 +61,8 @@
     <Compile Include="Client\SCSocket.cs" />
     <Compile Include="Client\SCTransport.cs" />
     <Compile Include="Client\SocketCluster.cs" />
-    <Compile Include="Client\SocketTest.cs" />
     <Compile Include="SCDisconnectCodes.cs" />
+    <Compile Include="SCLogingLevels.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

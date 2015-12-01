@@ -22,6 +22,9 @@ using System;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCLuster options parameters object for emitting messages to servers.
+	/// </summary>
 	public class SCEmitOptions
 	{
 		/// <summary>

@@ -22,10 +22,16 @@ using System;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster connection states.
+	/// </summary>
 	public enum SCConnectionState
 	{
+		/// <summary>In the process of connecting.</summary>
 		Connecting,
+		/// <summary>The socket connection is open.</summary>
 		Open,
+		/// <summary>The socket connection is closed.</summary>
 		Closed
 	}
 }

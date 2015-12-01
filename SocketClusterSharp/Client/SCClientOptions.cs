@@ -26,6 +26,9 @@ using SocketClusterSharp.Interfaces;
 
 namespace SocketClusterSharp.Client
 {
+	/// <summary>
+	/// SocketCluster client options.
+	/// </summary>
 	public class SCClientOptions : ISCOptions
 	{
 		/// <summary>
@@ -76,6 +79,10 @@ namespace SocketClusterSharp.Client
 		/// </summary>
 		public string Hostname{ get; set; }
 
+		/// <summary>
+		/// Gets or sets the current logging level <see cref="SocketClusterSharp.Internal.SCLogingLevels"/>.
+		/// </summary>
+		/// <value>The logging.</value>
 		public SCLogingLevels Logging { get; set; } = SCLogingLevels.Error;
 
 		/// <summary>

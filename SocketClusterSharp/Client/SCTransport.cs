@@ -161,7 +161,7 @@ namespace SocketClusterSharp.Client
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.SCTransport"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.SCTransport"/> class.
 		/// </summary>
 		/// <param name="authEngine">Auth engine.</param>
 		/// <param name="options">Options.</param>
@@ -215,8 +215,6 @@ namespace SocketClusterSharp.Client
 			_socket.Error += Socket_Error;
 			_socket.FrameReceived += Socket_FrameReceived;
 			_socket.MessageReceived += Socket_MessageReceived;
-
-
 
 			var url = Url ();
 			await _socket.OpenAsync (url);
@@ -348,7 +346,7 @@ namespace SocketClusterSharp.Client
 		{
 			_socketClosedCode = code;
 			_socketClosedData = data;
-			_socket.CloseAsync ();
+			await _socket.CloseAsync ();
 		}
 
 		/// <summary>
@@ -390,7 +388,7 @@ namespace SocketClusterSharp.Client
 			}
 		}
 
-		async Task HandShakeAsync (SCCallback  callback)
+		void HandShake (SCCallback  callback)
 		{
 			Auth.LoadToken (Options.AuthTokenName, (async (err, token) => {
 				if (err != null) {
@@ -516,7 +514,7 @@ namespace SocketClusterSharp.Client
 			}
 		}
 
-		async void Socket_Error (Exception exception)
+		void Socket_Error (Exception exception)
 		{
 			var scError = new SCError { Message = exception.Message, Stack = exception.StackTrace };
 			scError.Stack = exception.StackTrace;
@@ -532,9 +530,6 @@ namespace SocketClusterSharp.Client
 
 		void Socket_Closed ()
 		{
-			//Removes event handlers.
-			Off ();
-
 			switch (State) {
 			case SCConnectionState.Connecting:
 				OpenAborted ((int)_socketClosedCode, _socketClosedData);
@@ -550,15 +545,18 @@ namespace SocketClusterSharp.Client
 			State = SCConnectionState.Closed;
 			_socketClosedCode = 1005;
 			_socketClosedData = null;
+
+			//Removes event handlers.
+			Off ();
 		}
 
-		async void Socket_Opened ()
+		void Socket_Opened ()
 		{
 			this.Log ("Socket Connection Opened", SCLogingLevels.Debug);
 
 			ResetPingTimeout ();
 
-			await HandShakeAsync (async (err, status) => {
+			HandShake (async (err, status) => {
 				this.Log (String.Format ("HandShake Recieved: {0},  {1}", err, status), SCLogingLevels.Debug);
 				if (err != null) {
 					Error (err);

@@ -30,21 +30,21 @@ using System.Net;
 namespace SocketClusterSharp.Helpers.Web
 {
 	/// <summary>
-	/// A collection of <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/>.
+	/// A collection of <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/>.
 	/// </summary>
 	public class HttpValueCollection : Collection<HttpValue>
 	{
 		#region Constructors
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/> class.
 		/// </summary>
 		public HttpValueCollection ()
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/> class.
 		/// </summary>
 		/// <param name="query">Query.</param>
 		public HttpValueCollection (string query) : this (query, true)
@@ -52,7 +52,7 @@ namespace SocketClusterSharp.Helpers.Web
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/> class.
+		/// Initializes a new instance of the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/> class.
 		/// </summary>
 		/// <param name="query">Query.</param>
 		/// <param name="urlencoded">If set to <c>true</c> urlencoded.</param>
@@ -68,7 +68,7 @@ namespace SocketClusterSharp.Helpers.Web
 		#region Parameters
 
 		/// <summary>
-		/// Gets or sets the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> with the specified key.
+		/// Gets or sets the <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> with the specified key.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		public string this [string key] {
@@ -81,7 +81,7 @@ namespace SocketClusterSharp.Helpers.Web
 		#region Public Methods
 
 		/// <summary>
-		/// Add a new <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> with the specified key and value.
+		/// Add a new <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> with the specified key and value.
 		/// </summary>
 		/// <param name="key">Key.</param>
 		/// <param name="value">Value.</param>
@@ -91,11 +91,11 @@ namespace SocketClusterSharp.Helpers.Web
 		}
 
 		/// <summary>
-		/// Determines whether the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/> contains an element with the specified key.
+		/// Determines whether the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/> contains an element with the specified key.
 		/// </summary>
-		/// <returns><c>true</c>, if the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/> contains an element with the specified 
+		/// <returns><c>true</c>, if the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/> contains an element with the specified 
 		/// key; otherwise <c>false</c> otherwise.</returns>
-		/// <param name="key">The key to locate in the <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.</param>
+		/// <param name="key">The key to locate in the <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.</param>
 		public bool ContainsKey (string key)
 		{
 			return this.Any (x => string.Equals (x.Key, key, StringComparison.OrdinalIgnoreCase));
@@ -111,8 +111,8 @@ namespace SocketClusterSharp.Helpers.Web
 			return this.Where (x => string.Equals (x.Key, key, StringComparison.OrdinalIgnoreCase)).Select (x => x.Value).ToArray ();
 		}
 
-		/// <Docs>The <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> to remove from the current collection.</Docs>
-		/// <para>Removes all occurrence of <see cref="SocketClusterSharpClient.Helpers.Web.HttpValue"/> from the current collection with the given key.</para>
+		/// <Docs>The <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> to remove from the current collection.</Docs>
+		/// <para>Removes all occurrence of <see cref="SocketClusterSharp.Helpers.Web.HttpValue"/> from the current collection with the given key.</para>
 		/// <summary>
 		/// Remove the specified key.
 		/// </summary>
@@ -127,18 +127,18 @@ namespace SocketClusterSharp.Helpers.Web
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.</returns>
 		public override string ToString ()
 		{
 			return this.ToString (true);
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.</returns>
 		/// <param name="urlencoded">If set to <c>true</c> the returns string is url encoded.</param>
 		public virtual string ToString (bool urlencoded)
 		{
@@ -146,9 +146,9 @@ namespace SocketClusterSharp.Helpers.Web
 		}
 
 		/// <summary>
-		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.
 		/// </summary>
-		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharpClient.Helpers.Web.HttpValueCollection"/>.</returns>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.Helpers.Web.HttpValueCollection"/>.</returns>
 		/// <param name="urlencoded">If set to <c>true</c> the returns string is url encoded.</param>
 		/// <param name="excludeKeys">Keys to exclude.</param>
 		public virtual string ToString (bool urlencoded, IDictionary excludeKeys)

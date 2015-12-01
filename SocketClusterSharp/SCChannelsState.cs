@@ -23,13 +23,17 @@ using System;
 namespace SocketClusterSharp
 {
 	/// <summary>
-	/// SCChannels state.
+	/// Socket Cluster Channels state.
 	/// </summary>
 	public enum SCChannelsState
 	{
+		/// <summary>Currently subscibed to.</summary>
 		Subscribed,
+		/// <summary>Currently not subscibed to.</summary>
 		UnSubscribed,
+		/// <summary>Currently in the process of subscibeing to the channel.</summary>
 		Pending,
+		/// <summary>Waiting on a responce from server about subscription.</summary>
 		AwaitingCallback
 	}
 }

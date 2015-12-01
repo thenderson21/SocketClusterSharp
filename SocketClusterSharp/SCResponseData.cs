@@ -24,6 +24,9 @@ using Newtonsoft.Json;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster response data object.
+	/// </summary>
 	public class SCResponseData
 	{
 		/// <summary>

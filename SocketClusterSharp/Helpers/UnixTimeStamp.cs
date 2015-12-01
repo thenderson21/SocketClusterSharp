@@ -22,9 +22,16 @@ using System;
 
 namespace SocketClusterSharp.Helpers
 {
+	/// <summary>
+	/// A collection of methods for working with UNIX Timestamps.
+	/// </summary>
 	public static class UnixTimeStamp
 	{
-		
+
+		/// <summary>
+		/// Gets the UNIX epoch.
+		/// </summary>
+		/// <value>The epoch.</value>
 		public static DateTime Epoch{ get { return new DateTime (1970, 1, 1, 0, 0, 0, DateTimeKind.Utc); } }
 
 		/// <summary>

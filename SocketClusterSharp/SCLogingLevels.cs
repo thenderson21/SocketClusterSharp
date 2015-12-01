@@ -1,5 +1,5 @@
 ﻿//
-//  ViewController.cs
+//  SCLogingLevels.cs
 //
 //  Author:
 //       Todd Henderson <todd@todd-henderson.me>
@@ -20,27 +20,23 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 
-using UIKit;
-
-namespace SocketClusterSharp.Tests.iOS
+namespace SocketClusterSharp
 {
-	public partial class ViewController : UIViewController
+	/// <summary>
+	/// Socket Cluster loging levels.
+	/// </summary>
+	public enum SCLogingLevels
 	{
-		public ViewController (IntPtr handle) : base (handle)
-		{
-		}
-
-		public override void ViewDidLoad ()
-		{
-			base.ViewDidLoad ();
-			// Perform any additional setup after loading the view, typically from a nib.
-		}
-
-		public override void DidReceiveMemoryWarning ()
-		{
-			base.DidReceiveMemoryWarning ();
-			// Release any cached data, images, etc that aren't in use.
-		}
+		/// <summary>Turns logging off.</summary>
+		None,
+		/// <summary>Logs errors only.</summary>
+		Error,
+		/// <summary>Logs useful information and errors.</summary>
+		Info,
+		/// <summary>Logs Debugging info, useful information and errors.</summary>
+		Debug,
+		/// <summary>Logs all loggable information.</summary>
+		Trace
 	}
 }
 

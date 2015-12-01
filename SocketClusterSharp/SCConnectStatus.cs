@@ -24,6 +24,9 @@ using Newtonsoft.Json;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster connect status.
+	/// </summary>
 	public class SCConnectStatus
 	{
 		/// <summary>
@@ -55,6 +58,10 @@ namespace SocketClusterSharp
 		[JsonProperty (PropertyName = "authError", NullValueHandling = NullValueHandling.Ignore)]
 		public SCAuthError AuthError { get; set; }
 
+		/// <summary>
+		/// Returns a <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.SCConnectStatus"/>.
+		/// </summary>
+		/// <returns>A <see cref="System.String"/> that represents the current <see cref="SocketClusterSharp.SCConnectStatus"/>.</returns>
 		public override string ToString ()
 		{
 			return string.Format ("[SCConnectStatus: Id={0}, IsAuthenticated={1}, PingTimeout={2}, AuthError={3}]", Id, IsAuthenticated, PingTimeout, AuthError);

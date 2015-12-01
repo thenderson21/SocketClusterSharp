@@ -24,6 +24,11 @@ using SocketClusterSharp.Errors;
 
 namespace SocketClusterSharp
 {
+	/// <summary>
+	/// SocketCluster callback deligate called when oporation is compleated.
+	/// </summary>
+	/// <param name="error">Optional <see cref="SocketClusterSharp.Errors.SCError"/> object to be bassed to callback.</param>
+	/// /// <param name="data">Optional <see cref="Newtonsoft.Json.Linq.JToken"/> object to be passed to callback.</param>
 	public delegate void SCCallback (SCError error = null, JToken data = null);
 }
 
