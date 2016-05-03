@@ -4,7 +4,8 @@
 //  Author:
 //       Todd Henderson <todd@todd-henderson.me>
 //
-//  Copyright (c) 2015 Todd Henderson
+//  Copyright (c) 2015-2016 Todd Henderson
+//
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General  License as published by
