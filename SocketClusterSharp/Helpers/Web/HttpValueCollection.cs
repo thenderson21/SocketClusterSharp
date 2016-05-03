@@ -5,7 +5,7 @@
 //       Muhammad Rehan Saeed 
 //       Todd Henderson <todd@todd-henderson.me>
 //
-//  Copyright (c) 2015 Talk Fusion Inc.
+//  Copyright (c) 2015 Todd Henderson
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by

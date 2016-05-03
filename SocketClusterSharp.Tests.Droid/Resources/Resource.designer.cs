@@ -26,6 +26,9 @@ namespace SocketClusterSharp.Tests.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Nunit.Runner.Resource.String.ApplicationName = global::SocketClusterSharp.Tests.Droid.Resource.String.ApplicationName;
+			global::Nunit.Runner.Resource.String.Hello = global::SocketClusterSharp.Tests.Droid.Resource.String.Hello;
+			global::ModernHttpClient.Resource.String.library_name = global::SocketClusterSharp.Tests.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::SocketClusterSharp.Tests.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::SocketClusterSharp.Tests.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::SocketClusterSharp.Tests.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -1484,9 +1487,6 @@ namespace SocketClusterSharp.Tests.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_id = global::SocketClusterSharp.Tests.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_inflatedId = global::SocketClusterSharp.Tests.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_layout = global::SocketClusterSharp.Tests.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Nunit.Runner.Resource.String.ApplicationName = global::SocketClusterSharp.Tests.Droid.Resource.String.ApplicationName;
-			global::Nunit.Runner.Resource.String.Hello = global::SocketClusterSharp.Tests.Droid.Resource.String.Hello;
-			global::ModernHttpClient.Resource.String.library_name = global::SocketClusterSharp.Tests.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -3938,8 +3938,8 @@ namespace SocketClusterSharp.Tests.Droid
 			// aapt resource value: 0x7f06001f
 			public const int ApplicationName = 2131099679;
 			
-			// aapt resource value: 0x7f060020
-			public const int Hello = 2131099680;
+			// aapt resource value: 0x7f06001e
+			public const int Hello = 2131099678;
 			
 			// aapt resource value: 0x7f06000c
 			public const int abc_action_bar_home_description = 2131099660;
@@ -4001,8 +4001,8 @@ namespace SocketClusterSharp.Tests.Droid
 			// aapt resource value: 0x7f060021
 			public const int hello = 2131099681;
 			
-			// aapt resource value: 0x7f06001e
-			public const int library_name = 2131099678;
+			// aapt resource value: 0x7f060020
+			public const int library_name = 2131099680;
 			
 			// aapt resource value: 0x7f060000
 			public const int mr_media_route_button_content_description = 2131099648;
